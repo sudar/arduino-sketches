@@ -1,0 +1,6 @@
+[submodule "rawirdecode"]
+	path = rawirdecode
+	url = git://github.com/adafruit/Raw-IR-decoder-for-Arduino.git
+[submodule "ircommander"]
+	path = ircommander
+	url = git://github.com/adafruit/IR-Commander.git
