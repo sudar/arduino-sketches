@@ -14,6 +14,7 @@ This project consists of the following sketches
 - PushButtonControl2 - Push button with sticky state
 - SevenSegment - Shows how to use a seven segment display
 - USBMouse - Sketches which shows how to interact with a USB Mouse
+- YQL - Sketch that explains how to make calls to Yahoo Query Language and parse the results
 
 ## Explanation
 
