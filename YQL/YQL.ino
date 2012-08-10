@@ -7,7 +7,7 @@
  You can use the Arduino Ethernet shield, or the Adafruit Ethernet shield, 
  either one will work, as long as it's got a Wiznet Ethernet module on board.
  
- Uses the following libraries
+ Uses the following libraries:
 
  - DHCP routines in the Ethernet library which is part of the Arduino core from version 1.0 beta 1
  - String library, which is part of the Arduino core from version 0019.  
@@ -17,6 +17,7 @@
  Circuit:
  * Ethernet shield attached to pins 10, 11, 12, 13
 
+ Author:
  Sudar - <http://sudarmuthu.com> <http://hardwarefun.com>
  
  */
@@ -55,7 +56,8 @@ boolean jsonStarted = false;
 boolean responseParsed = false;
 short  bracesCount = 0;
 
-void setup() {
+void setup() 
+{
 
     // Open serial communications and wait for port to open:
     Serial.begin(9600);
@@ -82,8 +84,8 @@ void setup() {
     printFreeMemory("After Setup");
 }
 
-void loop() {
-
+void loop() 
+{
     if (client.connected()) {
         if (client.available()) {
 
@@ -146,7 +148,8 @@ void loop() {
     }
 }
 
-void connectToServer() {
+void connectToServer()
+{
     // attempt to connect
     Serial.println(F("Connecting to server..."));
 
