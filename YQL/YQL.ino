@@ -28,7 +28,7 @@
 
 // function definitions
 void connectToServer();
-void URLEncodeAndSend(char * msg);
+String URLEncode(const char * msg);
 char* parseJson(char *jsonString);
 void printFreeMemory(char* message);
 
@@ -42,13 +42,13 @@ IPAddress ip(10,0,0,9);
 EthernetClient client;
 
 // YQL related 
-char serverName[] = "query.yahooapis.com";  // Yahoo YQL URL
-char URL[] = "GET /v1/public/yql?q=";
-char YQLQuery[] = "select title from feed where url='http://sudarmuthu.com/feed' limit 1";
-char Format[] = "&format=json&env=";
-char Env[] = "store://datatables.org/alltableswithkeys";
-char HTTPVersion[]="  HTTP/1.1";
-char HOST[] = "HOST: query.yahooapis.com";
+const char serverName[] = "query.yahooapis.com";  // Yahoo YQL URL
+const char URL[] = "GET /v1/public/yql?q=";
+const char YQLQuery[] = "select title from feed where url='http://sudarmuthu.com/feed' limit 1";
+const char Format[] = "&format=json&env=";
+const char Env[] = "store://datatables.org/alltableswithkeys";
+const char HTTPVersion[]="  HTTP/1.1";
+const char HOST[] = "HOST: query.yahooapis.com";
 
 // Status related
 String jsonResponse = "";
@@ -157,49 +157,39 @@ void connectToServer()
         Serial.println(F("Making HTTP request..."));
         // make HTTP GET request to YQL:
         client.print(URL);
-        URLEncodeAndSend(YQLQuery);
+        client.print(URLEncode(YQLQuery));
         client.print(Format);
-        URLEncodeAndSend(Env);
+        client.print(URLEncode(Env));
         client.println(HTTPVersion);
-        client.println("HOST: query.yahooapis.com");
+        client.println(HOST);
         client.println();
     }
 }   
 
 /**
- * Adapted from: http://www.icosaedro.it/apache/urlencode.c
- *   Sends a message to the server encoding if needs be
+ * URL Encode a string.
+ * 
+ * Based on http://www.icosaedro.it/apache/urlencode.c
+ *
  */
-void URLEncodeAndSend(char * msg)
+String URLEncode(const char* msg)
 {
-    char *hex = "0123456789abcdef";
-    int Numbertobeencoded=0;
-    //Pass 1
-    char *c=msg;
+    const char *hex = "0123456789abcdef";
+    String encodedMsg = "";
 
-    while (*c!='\0'){
-        if( ('a' <= *c && *c <= 'z')
-                || ('A' <=* c && *c <= 'Z')
-                || ('0' <= *c && *c <= '9') ) {
-            client.print(*c);
-#ifdef DEBUG
-            Serial.print(*c);
-#endif
+    while (*msg!='\0'){
+        if( ('a' <= *msg && *msg <= 'z')
+                || ('A' <= *msg && *msg <= 'Z')
+                || ('0' <= *msg && *msg <= '9') ) {
+            encodedMsg += *msg;
         } else {
-            client.print('%');
-            client.print(hex[*c >> 4]);
-            client.print(hex[*c & 15]);
-#ifdef DEBUG
-            Serial.print('%');
-            Serial.print(hex[*c >> 4]);
-            Serial.print(hex[*c & 15]);
-#endif
+            encodedMsg += '%';
+            encodedMsg += hex[*msg >> 4];
+            encodedMsg += hex[*msg & 15];
         }
-        c++;
+        msg++;
     }
-#ifdef DEBUG
-    Serial.println("Done Sending !");
-#endif
+    return encodedMsg;
 }
 
 char* parseJson(char *jsonString) 
