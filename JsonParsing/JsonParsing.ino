@@ -13,15 +13,19 @@
 
  Author: 
 
- Sudar - <http://sudarmuthu.com> <http://hardwarefun.com>
+    Sudar - <http://sudarmuthu.com> <http://hardwarefun.com>
+    Refer to http://hardwarefun.com/tutorials/parsing-json-in-arduino
  
+License:
+ 
+     BeerWare ;)
  */
 #include <aJSON.h>
 
 char* parseJson(char *jsonString) ;
 
 // Json string to parse
-char jsonString[] = "{\"query\":{\"count\":1,\"created\":\"2012-08-04T14:46:03Z\",\"lang\":\"en-US\",\"results\":{\"item\":{\"title\":\"Handling FTP usernames with @ in them\"}}}}";
+const char jsonString[] = "{\"query\":{\"count\":1,\"created\":\"2012-08-04T14:46:03Z\",\"lang\":\"en-US\",\"results\":{\"item\":{\"title\":\"Handling FTP usernames with @ in them\"}}}}";
 
 void setup() {
     Serial.begin(9600);
@@ -38,7 +42,12 @@ void setup() {
     }
 }
 
-char* parseJson(char *jsonString) 
+/**
+ * Parse the JSON String. Uses aJson library
+ * 
+ * Refer to http://hardwarefun.com/tutorials/parsing-json-in-arduino
+ */
+char* parseJson(const char *jsonString) 
 {
     char* value;
 
