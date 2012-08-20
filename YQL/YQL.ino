@@ -27,7 +27,7 @@
 #include <MemoryFree.h>
 
 // function definitions
-void connectToServer();
+void MakeHTTPRequest();
 String URLEncode(const char * msg);
 char* parseJson(char *jsonString);
 void printFreeMemory(char* message);
@@ -79,7 +79,7 @@ void setup()
     Serial.println(Ethernet.localIP());
 
     // connect to YQL Server
-    connectToServer();
+    MakeHTTPRequest();
 
     printFreeMemory("After Setup");
 }
@@ -148,7 +148,11 @@ void loop()
     }
 }
 
-void connectToServer()
+/**
+ * Make HTTP Request to the server
+ *
+ */
+void MakeHTTPRequest()
 {
     // attempt to connect
     Serial.println(F("Connecting to server..."));
@@ -192,6 +196,11 @@ String URLEncode(const char* msg)
     return encodedMsg;
 }
 
+/**
+ * Parse the JSON String. Uses aJson library
+ * 
+ * Refer to http://hardwarefun.com/tutorials/parsing-json-in-arduino
+ */
 char* parseJson(char *jsonString) 
 {
     char* value;
@@ -232,6 +241,8 @@ char* parseJson(char *jsonString)
 
 /**
  * Print the Free memory along with a message in the Serial window
+ *
+ * Uses MemoryFree library - https://github.com/sudar/MemoryFree
  */
 void printFreeMemory(char* message)
 {
