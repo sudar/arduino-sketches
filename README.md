@@ -15,10 +15,11 @@ This project consists of the following sketches
 - SevenSegment - Shows how to use a seven segment display
 - USBMouse - Sketches which shows how to interact with a USB Mouse
 - YQL - Sketch that explains how to make calls to Yahoo Query Language and parse the results. Code explanation is available at http://hardwarefun.com/tutorials/accessing-yql-from-arduino
+- Two Arduino through Serial - Sketch that shows how to communicate between two Arduino using SoftwareSerial library
 
 ## Explanation
 
-Explanation/documentation for these sketches can be found at their [homepage](http://sudarmuthu.com/arduino/)
+Explanation/documentation for these sketches can be found at their [homepage](http://hardwarefun.com/)
 
 ## License
 
