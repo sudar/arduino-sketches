@@ -20,9 +20,6 @@
 #include <SoftwareSerial.h>
 SoftwareSerial mySerial(14, 15); // RX, TX
 
-char serialVal;
-char mySerialVal;
-
 void setup() {  
     Serial.begin(115200);
     mySerial.begin(115200);
