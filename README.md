@@ -13,6 +13,11 @@ This repo consists of the following sketches. I have tried to organize them into
 - PushButtonControl - Basic push button
 - PushButtonControl2 - Push button with sticky state
 
+## Serial
+
+- SerialPrint - Show how to use SerialPrint
+- SerialWrite - Show how to use SerialWrite
+
 ### Components/Sensors Specific
 - SevenSegment - Shows how to use a seven segment display
 - USBMouse - Sketches which shows how to interact with a USB Mouse
