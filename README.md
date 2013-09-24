@@ -15,7 +15,6 @@ This project consists of the following sketches
 - SevenSegment - Shows how to use a seven segment display
 - USBMouse - Sketches which shows how to interact with a USB Mouse
 - YQL - Sketch that explains how to make calls to Yahoo Query Language and parse the results. Code explanation is available at http://hardwarefun.com/tutorials/accessing-yql-from-arduino
-- Test Motor - Sketch that shows how to test a DC motor using Arduino
 
 ## Explanation
 
